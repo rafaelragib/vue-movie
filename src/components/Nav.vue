@@ -1,9 +1,7 @@
 <template>
  <div class="topnav">
-  <a class="active" href="#home">Home</a>
-  <a href="#news">News</a>
-  <a href="#contact">Contact</a>
-  <a href="#about">About</a>
+  <a  href="#home" v-for="title in navTitle" :key="title">{{title}}</a>
+
 </div>
 </template>
 
@@ -11,7 +9,12 @@
 export default 
 {
     name: 'Nav',
-
+    data(){
+        return{
+            navTitle:['Home','Other','Details']
+        }
+        
+    }
 }
 </script>
 
@@ -19,14 +22,14 @@ export default
 <style scoped>
 /* Add a black background color to the top navigation */
 .topnav {
-  background-color: #333;
+  background-color: #161925;
   overflow: hidden;
 }
 
 /* Style the links inside the navigation bar */
 .topnav a {
   float: left;
-  color: #f2f2f2;
+  color: #CBF7ED;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
@@ -35,13 +38,13 @@ export default
 
 /* Change the color of links on hover */
 .topnav a:hover {
-  background-color: #ddd;
+  background-color: #406e8e;
   color: black;
 }
 
 /* Add a color to the active/current link */
 .topnav a.active {
-  background-color: #04AA6D;
+  background-color: #8ea8c3;
   color: white;
 }
 
