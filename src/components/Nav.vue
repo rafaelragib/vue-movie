@@ -1,7 +1,6 @@
 <template>
  <div class="topnav">
   <a  href="#home" v-for="title in navTitle" :key="title">{{title}}</a>
-
 </div>
 </template>
 
@@ -22,7 +21,7 @@ export default
 <style scoped>
 /* Add a black background color to the top navigation */
 .topnav {
-  background-color: #161925;
+  background-color: #2f3e46;
   overflow: hidden;
 }
 
