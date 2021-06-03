@@ -22,6 +22,7 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   margin: 0;
   background-color: #CAD2C5;
+  min-height: 900px;
 }
 .searchComp
 {

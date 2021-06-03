@@ -4,9 +4,10 @@
           Too much search result. Borden your query.
       
     </div>
-    <div v-else-if="movieResult==='okay'">
-     <div v-for="movie in movies" :key="movie.imdbID">
-        
+    <div class="movieContainer"  v-else-if="movieResult==='okay'">
+     <div class="movieItem" v-for="movie in movies" :key="movie.imdbID">
+        <img :src="movie.Poster"/>
+        <h2>{{movie.Title}}</h2>
       </div>
     </div>
     <div v-else-if="movieResult===''">
@@ -23,15 +24,19 @@ export default {
     movieResult: String,
     
   },
-  data(){
-     
-  },
-  computed:
-  {
-     
-  }
 };
 </script>
 
 <style scoped>
+.movieContainer
+{
+    display:flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+}
+.movieItem
+{
+    padding:1em;
+    flex-grow: 1;
+}
 </style>
