@@ -5,8 +5,8 @@
   </div> -->
   <div>
     <div class="topnav">
-      <div v-for="navItems in nav" :key="navItems.title">
-        <router-link :to="navItems.path">{{ navItems.title }}</router-link>
+      <div  v-for="navItems in nav" :key="navItems.title">
+        <router-link class="anchor" :to="navItems.path">{{ navItems.title }}</router-link>
       </div>
     </div>
     <router-view />
@@ -24,7 +24,7 @@ export default {
           path: "/",
         },
         {
-          title: "SignIn",
+          title: "Sign In",
           path: "/SignIn",
         },
       ],
@@ -39,18 +39,33 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   background-color: #2c3e50;
+  min-height: 900px;
 }
-/* 
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
+.topnav {
+  background-color: #2f3e46;
+  overflow: hidden;
 }
 
-#nav a.router-link-exact-active {
-  color: #42b983;
-} */
+/* Style the links inside the navigation bar */
+.anchor {
+  float: left;
+  color: #CBF7ED;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.anchor:hover {
+  background-color: #406e8e;
+  color: black;
+}
+
+/* Add a color to the active/current link */
+.anchor.active {
+  background-color: #8ea8c3;
+  color: white;
+}
+
 </style>
