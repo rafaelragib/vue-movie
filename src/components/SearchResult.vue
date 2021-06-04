@@ -8,6 +8,7 @@
      <div class="movieItem" v-for="movie in movies" :key="movie.imdbID">
         <img :src="movie.Poster"/>
         <h2>{{movie.Title}}</h2>
+        <p>{{movie.Year}}</p>
       </div>
     </div>
     <div v-else-if="movieResult===''">

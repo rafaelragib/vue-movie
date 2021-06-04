@@ -1,6 +1,7 @@
 <template>
 <div >
   <Nav></Nav>
+ 
   <Search class="searchComp"></Search>
 </div>
 </template>
@@ -8,6 +9,8 @@
 <script>
 import Nav from './components/Nav.vue'
 import Search from './components/Search.vue'
+
+
 
 export default {
   name: 'App',

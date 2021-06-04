@@ -1,10 +1,12 @@
 <template>
  <div class="topnav">
-  <a  href="#home" v-for="title in navTitle" :key="title">{{title}}</a>
+  <router-link v-for="title in navTitle" :key="title"  :href="'/'+title" >{{title}}</router-link>
 </div>
 </template>
 
 <script>
+
+
 export default 
 {
     name: 'Nav',
