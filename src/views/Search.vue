@@ -65,6 +65,7 @@ import SearchResult from './SearchResult'
 .searchComponent
 {
     margin:1em;
+    
 }
 .searchButton
 {
@@ -75,4 +76,5 @@ import SearchResult from './SearchResult'
 {
     cursor: pointer;
 }
+
 </style>

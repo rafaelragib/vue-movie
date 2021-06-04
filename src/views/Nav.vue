@@ -1,7 +1,5 @@
 <template>
- <div class="topnav">
-  <router-link v-for="title in navTitle" :key="title"  :href="'/'+title" >{{title}}</router-link>
-</div>
+ 
 </template>
 
 <script>
@@ -10,13 +8,10 @@
 export default 
 {
     name: 'Nav',
-    data(){
-        return{
-            navTitle:['Home','Other','Details']
-        }
+   
         
-    }
 }
+
 </script>
 
 
