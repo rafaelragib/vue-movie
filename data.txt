@@ -1,0 +1,6 @@
+{
+    "userone":{
+        "username": "testUser",
+        "password":"pass"
+    }
+}
