@@ -1,23 +1,29 @@
 <template>
-  <!-- <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div> -->
   <div>
     <div class="topnav">
-      <div  v-for="navItems in nav" :key="navItems.title">
-        <router-link class="anchor" :to="navItems.path">{{ navItems.title }}</router-link>
+      <div v-for="navItems in nav" :key="navItems.title">
+        <router-link class="anchor" :to="navItems.path">{{
+          navItems.title
+        }}</router-link>
       </div>
+      <router-link
+        class="anchor"
+        v-if="watchListNav"
+        :to="watchListPath.path"
+        >{{ watchListPath.title }}</router-link
+      >
     </div>
-    <router-view />
+    <router-view @authenticate="authentication" />
   </div>
 </template>
 <script>
+import dataJson from "./views/data.json";
 export default {
   name: "App",
 
   data() {
     return {
+      myData: dataJson,
       nav: [
         {
           title: "Search",
@@ -28,7 +34,23 @@ export default {
           path: "/SignIn",
         },
       ],
+
+      watchListPath: {
+        title: "Watch List",
+        path: "/WatchList",
+      },
+      watchListNav: false,
     };
+  },
+  methods: {
+    authentication({ userName, password }) {
+      //console.log(userName);
+      this.myData.users.forEach((element) => {
+        if (element.username === userName && element.password === password)
+          this.watchListNav = true;
+      });
+      console.log(this.watchListNav);
+    },
   },
 };
 </script>
@@ -49,7 +71,7 @@ export default {
 /* Style the links inside the navigation bar */
 .anchor {
   float: left;
-  color: #CBF7ED;
+  color: #cbf7ed;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
@@ -67,5 +89,4 @@ export default {
   background-color: #8ea8c3;
   color: white;
 }
-
 </style>

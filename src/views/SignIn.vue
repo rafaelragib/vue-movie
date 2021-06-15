@@ -2,20 +2,30 @@
   <div class="formContainer">
     <div>User Login</div>
     <form @submit.prevent="">
-      <input text="email" placeholder="example@domain.com" />
-      <input text="password" />
+      <input v-model="userName" type="text" placeholder="example@domain.com" />
+      <input v-model="password" type="password" />
+      <button @click="$emit('authenticate', { userName, password })">
+        Click me
+      </button>
     </form>
+    <!-- <div v-for="data in myData" :key="data.id">{{data.username}}</div> -->
   </div>
 </template>
 
 <script>
-export default {
+import { defineComponent } from "@vue/runtime-core";
+
+export default defineComponent({
   name: "SignIn",
-  methods: {
-    readFile() {
-    },
+  data() {
+    return {
+      userName: "",
+      password: "",
+      auth: false,
+    };
   },
-};
+  methods: {},
+});
 </script>
 
 <style>
