@@ -16,9 +16,11 @@
     <router-view @authenticate="authentication" />
   </div>
 </template>
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue'
 import dataJson from "./views/data.json";
-export default {
+import store from './store';
+export default defineComponent({
   name: "App",
 
   data() {
@@ -46,13 +48,14 @@ export default {
     authentication({ userName, password }) {
       //console.log(userName);
       this.myData.users.forEach((element) => {
-        if (element.username === userName && element.password === password)
-          this.watchListNav = true;
+        if(typeof element.username==='string' && typeof element.password==='string' )
+          if (element.username === userName && element.password === password)
+            this.watchListNav = true;
       });
-      console.log(this.watchListNav);
+    
     },
   },
-};
+});
 </script>
 <style>
 #app {

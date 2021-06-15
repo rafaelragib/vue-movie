@@ -4,7 +4,7 @@
     <form @submit.prevent="">
       <input v-model="userName" type="text" placeholder="example@domain.com" />
       <input v-model="password" type="password" />
-      <button @click="$emit('authenticate', { userName, password })">
+      <button @click="$emit('authenticate', { userName, password})">
         Click me
       </button>
     </form>
@@ -12,7 +12,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from "@vue/runtime-core";
 
 export default defineComponent({
