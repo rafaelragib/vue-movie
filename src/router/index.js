@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Search from '../views/Search.vue'
 import SignIn from '../views/SignIn.vue'
 import WatchList from '../views/WatchList.vue'
-
+import store from '../store'
 
 const routes = [
   {
@@ -11,14 +11,17 @@ const routes = [
     component:Search
   },
   {
-    path:'/signIn',
+    path:'/signin',
     name :'SignIn',
     component:SignIn
   },
   {
-    path:'/WatchList',
+    path:'/Watchlist',
     name :'WatchList',
-    component:WatchList
+    component:WatchList,
+    meta:{
+      requireAuth:true
+    }
   },
   
 ]
@@ -26,6 +29,22 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
+})
+
+router.beforeEach((to,from,next)=>
+{
+  if(to.meta.requireAuth){
+    if(store.user!=="")
+      next();
+  
+    else
+    next({
+      name:'SignIn'
+    });
+  }
+  else
+    next();
+  
 })
 
 export default router

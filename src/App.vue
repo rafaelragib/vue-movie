@@ -1,16 +1,15 @@
 <template>
-    <div class="topnav">
-      <div v-for="navItems in nav" :key="navItems.title">
-        <router-link class="anchor" :to="navItems.path">{{
-          navItems.title
-        }}</router-link>
-      </div>
-      
+  <div class="topnav">
+    <div v-for="navItems in nav" :key="navItems.title">
+      <router-link class="anchor" :to="navItems.path">{{
+        navItems.title
+      }}</router-link>
+    </div>
     <router-view />
   </div>
 </template>
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "App",
@@ -24,15 +23,13 @@ export default defineComponent({
         },
         {
           title: "Sign In",
-          path: "/SignIn",
+          path: "/Signin",
+        },
+        {
+          title: "Watch List",
+          path: "/Watchlist",
         },
       ],
-
-      watchListPath: {
-        title: "Watch List",
-        path: "/WatchList",
-      },
-      
     };
   },
 });

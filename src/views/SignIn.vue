@@ -32,7 +32,9 @@ export default defineComponent({
         this.password === this.correctPassword
       )
         store.user=this.userName;
-       console.log(this.dataUser);
+      else{
+        alert('wrong password and user');
+      }
     },
   },
 });
