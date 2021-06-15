@@ -4,9 +4,7 @@
     <form @submit.prevent="">
       <input v-model="userName" type="text" placeholder="example@domain.com" />
       <input v-model="password" type="password" />
-      <button @click="$emit('authenticate', { userName, password})">
-        Click me
-      </button>
+      <button @click="authenticate">Click me</button>
     </form>
     <!-- <div v-for="data in myData" :key="data.id">{{data.username}}</div> -->
   </div>
@@ -14,17 +12,29 @@
 
 <script lang="ts">
 import { defineComponent } from "@vue/runtime-core";
-
+import store from "../store";
 export default defineComponent({
   name: "SignIn",
   data() {
     return {
+      dataUser:store,
       userName: "",
       password: "",
       auth: false,
+      correctUserName: "testuser",
+      correctPassword: "pass",
     };
   },
-  methods: {},
+  methods: {
+    authenticate() {
+      if (
+        this.userName === this.correctUserName &&
+        this.password === this.correctPassword
+      )
+        store.user=this.userName;
+       console.log(this.dataUser);
+    },
+  },
 });
 </script>
 

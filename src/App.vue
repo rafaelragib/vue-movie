@@ -1,31 +1,22 @@
 <template>
-  <div>
     <div class="topnav">
       <div v-for="navItems in nav" :key="navItems.title">
         <router-link class="anchor" :to="navItems.path">{{
           navItems.title
         }}</router-link>
       </div>
-      <router-link
-        class="anchor"
-        v-if="watchListNav"
-        :to="watchListPath.path"
-        >{{ watchListPath.title }}</router-link
-      >
-    </div>
-    <router-view @authenticate="authentication" />
+      
+    <router-view />
   </div>
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue'
-import dataJson from "./views/data.json";
-import store from './store';
+
 export default defineComponent({
   name: "App",
 
   data() {
     return {
-      myData: dataJson,
       nav: [
         {
           title: "Search",
@@ -41,19 +32,8 @@ export default defineComponent({
         title: "Watch List",
         path: "/WatchList",
       },
-      watchListNav: false,
+      
     };
-  },
-  methods: {
-    authentication({ userName, password }) {
-      //console.log(userName);
-      this.myData.users.forEach((element) => {
-        if(typeof element.username==='string' && typeof element.password==='string' )
-          if (element.username === userName && element.password === password)
-            this.watchListNav = true;
-      });
-    
-    },
   },
 });
 </script>

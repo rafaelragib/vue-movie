@@ -4,7 +4,6 @@
     "module": "esnext",
     "strict": true,
     "jsx": "preserve",
-    "resolveJsonModule":true,
     "importHelpers": true,
     "moduleResolution": "node",
     "experimentalDecorators": true,
@@ -35,7 +34,7 @@
     "src/**/*.vue",
     "tests/**/*.ts",
     "tests/**/*.tsx"
-  ],
+, "src/store.js"  ],
   "exclude": [
     "node_modules"
   ]

@@ -11,7 +11,7 @@
         <p>{{movie.Year}}</p>
       </div>
     </div>
-    <div class="result-text" v-else-if="movieResult===''">
+    <div v-else-if="movieResult===''">
         Input movie name to see result.
     </div>
   </div>
@@ -39,9 +39,5 @@ export default {
 {
     padding:1em;
     flex-grow: 1;
-}
-.result-text
-{
-  padding-top: 1em;
 }
 </style>
