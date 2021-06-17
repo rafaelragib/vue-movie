@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Search from '../views/Search.vue'
 import SignIn from '../views/SignIn.vue'
 import WatchList from '../views/WatchList.vue'
-import store from '../store'
+import {store} from '../store'
 
 const routes = [
   {
