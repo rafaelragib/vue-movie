@@ -1,9 +1,11 @@
 <template>
-  <div class="topnav">
-    <div v-for="navItems in nav" :key="navItems.title">
-      <router-link class="anchor" :to="navItems.path">{{
-        navItems.title
-      }}</router-link>
+  <div>
+    <div class="topnav">
+      <div v-for="navItems in nav" :key="navItems.title">
+        <router-link class="anchor" :to="navItems.path">{{
+          navItems.title
+        }}</router-link>
+      </div>
     </div>
     <router-view />
   </div>
@@ -40,18 +42,18 @@ export default defineComponent({
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  background-color: #2c3e50;
+  background-color: #e3fdfd;
   min-height: 900px;
 }
 .topnav {
-  background-color: #2f3e46;
+  background-color: #71c9ce;
   overflow: hidden;
 }
 
 /* Style the links inside the navigation bar */
 .anchor {
   float: left;
-  color: #cbf7ed;
+  color: #E3FDFD;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;

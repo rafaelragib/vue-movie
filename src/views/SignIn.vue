@@ -12,12 +12,12 @@
 
 <script lang="ts">
 import { defineComponent } from "@vue/runtime-core";
-import {store} from "../store";
+import { store } from "../store";
 export default defineComponent({
   name: "SignIn",
   data() {
     return {
-      dataUser:store,
+      dataUser: store,
       userName: "",
       password: "",
       auth: false,
@@ -30,10 +30,11 @@ export default defineComponent({
       if (
         this.userName === this.correctUserName &&
         this.password === this.correctPassword
-      )
-        store.user=this.userName;
-      else{
-        alert('wrong password and user');
+      ) {
+        store.user = this.userName;
+        this.$router.push({path:'/Watchlist'});
+} else {
+        alert("wrong password and user");
       }
     },
   },
@@ -56,5 +57,6 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
   margin: 1em;
+  padding: 0 0.5em;
 }
 </style>

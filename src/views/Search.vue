@@ -30,6 +30,7 @@ export default {
         const response = await fetch(
           `${process.env.VUE_APP_ENV_VARIABLE}s=${this.searchquery}&type=movie&${process.env.VUE_APP_API_KEY}`
         );
+        
         return response.json();
       } catch (error) {
         console.log(error);
@@ -61,7 +62,7 @@ export default {
 </script>
 <style scoped>
 .searchComponent {
-  margin: 1em;
+  margin: 4em;
 }
 .searchButton {
   margin-left: 1em;
