@@ -1,24 +1,19 @@
 # movie-application
+A pet project of learning Vue 3 and typescript using OMDB API. In this project, I have added features such as:
+* watchlist
+* Sign In (Working to authenticate it by using backend)
+* Search Movie 
+### Check out the application: https://rafaelragib.github.io/vue-movie/
+(To login use username: testuser, password: pass
+Any sort of issue or improvement is highly appriciated. 
 
-## Project setup
-```
-npm install
-```
+## Tools used in the application 
+* Vue 3
+* Vue Router
+* OMDB Api
+* npm
+* Language: Typescript
+ ## Installation 
+To install and run in a local environment, npm needs to be install. and to start the project:
+``` npm run serve```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
