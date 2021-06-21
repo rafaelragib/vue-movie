@@ -9,28 +9,39 @@
   </div>
 </template>
 
-<script>
-import SearchResult from "./SearchResult";
-import { store } from "../store";
+<script lang="ts">
 
-export default {
+
+import SearchResult from "./SearchResult.vue"
+import { store } from "../store";
+import { defineComponent } from "@vue/runtime-core";
+
+type movieObject={
+  Poster:string,
+  Title:string,
+  Year:string,
+  imdbID:string,
+  watch:boolean
+}
+
+export default defineComponent({
   name: "Search",
   components: { SearchResult },
   data() {
     return {
-      searchquery: "",
-      movies: [],
-      movieResult: "",
+      searchquery: "" ,
+      movies: [] as movieObject[],
+      movieResult: "" ,
     };
   },
 
   methods: {
-    async fetchMovie() {
+    async fetchMovie():Promise<any> {
       try {
         const response = await fetch(
           `${process.env.VUE_APP_ENV_VARIABLE}s=${this.searchquery}&type=movie&${process.env.VUE_APP_API_KEY}`
         );
-        
+        console.log(response);
         return response.json();
       } catch (error) {
         console.log(error);
@@ -48,17 +59,16 @@ export default {
 
         this.movieResult = "okay";
         this.movies = data.Search;
-        this.movies.forEach(element => {
+        this.movies.forEach( (element:movieObject) => {
             if(store.watchList.indexOf(element.Title)=== -1)
                 element.watch=false;
             else
                 element.watch=true;
         });
-        //console.log(this.movies);
       });
     },
   },
-};
+});
 </script>
 <style scoped>
 .searchComponent {
