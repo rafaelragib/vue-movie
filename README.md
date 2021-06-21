@@ -5,7 +5,7 @@ A pet project of learning Vue 3 and typescript using OMDB API. In this project, 
 * Search Movie 
 ### Check out the application: https://rafaelragib.github.io/vue-movie/
 (To login use username: testuser, password: pass
-Any sort of issue or improvement is highly appriciated. 
+Any sort of issue or improvement is highly appreciated. 
 
 ## Tools used in the application 
 * Vue 3
@@ -14,6 +14,13 @@ Any sort of issue or improvement is highly appriciated.
 * npm
 * Language: Typescript
  ## Installation 
-To install and run in a local environment, npm needs to be install. and to start the project:
-``` npm run serve```
+To install and run in a local environment, npm needs to be install. ## Project setup
+```
+npm install
+```
+and to start the project:
+
+``` 
+npm run serve
+```
 
