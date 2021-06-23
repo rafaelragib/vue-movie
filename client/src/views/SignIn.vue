@@ -1,11 +1,14 @@
 <template>
   <div class="formContainer">
+    <div v-if="!auth">
     <div>User Login</div>
     <form @submit.prevent="">
       <input v-model="userName" type="text" placeholder="example@domain.com" />
       <input v-model="password" type="password" />
       <button @click="authenticate">Click me</button>
     </form>
+    </div>
+    <div v-else>Logged in </div>
     <!-- <div v-for="data in myData" :key="data.id">{{data.username}}</div> -->
   </div>
 </template>
@@ -17,9 +20,9 @@ export default defineComponent({
   name: "SignIn",
   data() {
     return {
-      dataUser: store,
+      auth:false,
       userName: "",
-      password: "",
+      password: ""
     };
   },
   methods: {
@@ -39,8 +42,7 @@ export default defineComponent({
           response.json().then((data) => {
             store.token = data.token;
             store.userId = data.userId;
-           
-            console.log(data.userId);
+            this.auth=data.auth;
             this.$emit("updateUserId", data.links.watchlist);
             this.populateWatchList(data.links.watchlist);
           });
@@ -54,12 +56,9 @@ export default defineComponent({
     async populateWatchList(getLink: string) {
       try {
         const response = await fetch(getLink);
-
         const data = await response.json();
         store.watchList = data;
-        //   console.log(store.watchList);
-        //  store.watchList=data.watchList;
-        //  this.val=data.watchList;
+        this.$router.push({path:'/Watchlist'});
       } catch (error) {
         console.log(error);
       }

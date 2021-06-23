@@ -6,17 +6,18 @@
           navItems.title
         }}</router-link>
       </div>
+      <div class="anchor" v-if="!(watchLink === '')" @click="refreshPage">Log Out</div>
     </div>
     <router-view @updateUserId="setwatchlink($event)" />
   </div>
 </template>
 <script lang="ts">
 import { defineComponent } from "vue";
-import {store} from './store';
+import { store } from "./store";
 export default defineComponent({
   name: "App",
-  created(){
-  window.addEventListener('beforeunload', this.updateWatchList);
+  created() {
+    window.addEventListener("beforeunload", this.updateWatchList);
   },
   data() {
     return {
@@ -33,37 +34,34 @@ export default defineComponent({
           title: "Watch List",
           path: "/Watchlist",
         },
-        
       ],
-      watchLink:""
+      watchLink: "",
     };
   },
-  methods:{
-    async updateWatchList(){
-        try{
+  methods: {
+    async updateWatchList() {
+      try {
         const request = {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          watchList: store.watchList
-        }),
-      };
-      await fetch(this.watchLink, request);
-
-      }
-      catch(error){
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            watchList: store.watchList,
+          }),
+        };
+        await fetch(this.watchLink, request);
+      } catch (error) {
         console.debug(error);
       }
-      },
-    setwatchlink(watchLink:string){
-      this.watchLink=watchLink;
+    },
+    setwatchlink(watchLink: string) {
+      this.watchLink = watchLink;
+    },
+    refreshPage(){
+      window.location.reload();
     }
   },
-  unmounted(){
-      this.updateWatchList();
-  }
 });
 </script>
 <style>
@@ -83,7 +81,7 @@ export default defineComponent({
 /* Style the links inside the navigation bar */
 .anchor {
   float: left;
-  color: #E3FDFD;
+  color: #e3fdfd;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;

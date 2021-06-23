@@ -41,7 +41,6 @@ export default defineComponent({
         const response = await fetch(
           `${process.env.VUE_APP_ENV_VARIABLE}s=${this.searchquery}&type=movie&${process.env.VUE_APP_API_KEY}`
         );
-        console.log(response);
         return response.json();
       } catch (error) {
         console.log(error);
