@@ -7,15 +7,17 @@
         }}</router-link>
       </div>
     </div>
-    <router-view />
+    <router-view @updateUserId="setwatchlink($event)" />
   </div>
 </template>
 <script lang="ts">
 import { defineComponent } from "vue";
-
+import {store} from './store';
 export default defineComponent({
   name: "App",
-
+  created(){
+  window.addEventListener('beforeunload', this.updateWatchList);
+  },
   data() {
     return {
       nav: [
@@ -31,9 +33,37 @@ export default defineComponent({
           title: "Watch List",
           path: "/Watchlist",
         },
+        
       ],
+      watchLink:""
     };
   },
+  methods:{
+    async updateWatchList(){
+        try{
+        const request = {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          watchList: store.watchList
+        }),
+      };
+      await fetch(this.watchLink, request);
+
+      }
+      catch(error){
+        console.debug(error);
+      }
+      },
+    setwatchlink(watchLink:string){
+      this.watchLink=watchLink;
+    }
+  },
+  unmounted(){
+      this.updateWatchList();
+  }
 });
 </script>
 <style>

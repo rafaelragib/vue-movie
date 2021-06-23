@@ -28,7 +28,6 @@ export default defineComponent({
   data() {
     return {
       movieList: this.movies,
-
     };
   },
   watch: {

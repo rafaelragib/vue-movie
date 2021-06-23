@@ -34,18 +34,35 @@ export default defineComponent({
           password: this.password,
         }),
       };
-      const response = await fetch("http://localhost:3000/login", request);
-      if (response.status === 200) {
+      fetch("http://localhost:3000/login", request).then((response) => {
+        if (response.status === 200) {
+          response.json().then((data) => {
+            store.token = data.token;
+            store.userId = data.userId;
+           
+            console.log(data.userId);
+            this.$emit("updateUserId", data.links.watchlist);
+            this.populateWatchList(data.links.watchlist);
+          });
+        } else {
+          alert("wrong password and user");
+        }
+      }).catch(error=>{
+        console.log(error);
+      });
+    },
+    async populateWatchList(getLink: string) {
+      try {
+        const response = await fetch(getLink);
+
         const data = await response.json();
-  
-        store.token = data.token;
-        this.$router.push({path:'/Watchlist'});
-      
+        store.watchList = data;
+        //   console.log(store.watchList);
+        //  store.watchList=data.watchList;
+        //  this.val=data.watchList;
+      } catch (error) {
+        console.log(error);
       }
-      else{
-         alert("wrong password and user");
-      }
-    
     },
   },
 });

@@ -61,9 +61,17 @@ export const userController = (user: mongoose.Model<userType>,watchList:mongoose
                     expiresIn: 86400 // expires in 24 hours
                 });
                 res.status(200);
-              
+                const requestObject={
+                    auth:true,
+                    token:token,
+                    userId:queryUser._id,
+                    links:
+                    {
+                        watchlist:`http://localhost:3000/watchlist/${queryUser._id}`
+                    },
+                };
                
-                return res.send({auth:true,token:token});
+                return res.send(requestObject);
                 
             }
 
