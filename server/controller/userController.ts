@@ -1,9 +1,10 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import { user, userType } from '../models/userModel'
+import {userType } from '../models/userModel';
+import { watchType } from '../models/watchModel'
 import mongoose from 'mongoose';
 import { Request, Response } from 'express';
-export const userController = (user: mongoose.Model<userType>) => {
+export const userController = (user: mongoose.Model<userType>,watchList:mongoose.Model<watchType>) => {
     async function createUser(req: any, res: any) {
         try {
             const hashedPass = bcrypt.hashSync(req.body.password, 8);
@@ -20,14 +21,22 @@ export const userController = (user: mongoose.Model<userType>) => {
                 const jwtToken = jwt.sign({ id: newUser._id }, secret, {
                     expiresIn: 86400
                 })
+                const newWatchList= await watchList.create({
+                    'userId':newUser._id,
+                    'watchList': [] as string[]
+                });
+                if(!newWatchList){
+                    res.status(500);
+                    return res.send('Server Error');
+                }
                 res.status(200);
-                res.send({ auth: true, token: jwtToken });
+                return res.send({ auth: true, token: jwtToken });
 
             }
         }
         catch (error) {
             res.status(500);
-            res.send(error);
+            return res.send(error);
         }
     }
     async function login(req: Request, res: Response) {
