@@ -20,22 +20,32 @@ export default defineComponent({
       dataUser: store,
       userName: "",
       password: "",
-      auth: false,
-      correctUserName: "testuser",
-      correctPassword: "pass",
     };
   },
   methods: {
-    authenticate() {
-      if (
-        this.userName === this.correctUserName &&
-        this.password === this.correctPassword
-      ) {
-        store.user = this.userName;
+    async authenticate() {
+      const request = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: this.userName,
+          password: this.password,
+        }),
+      };
+      const response = await fetch("http://localhost:3000/login", request);
+      if (response.status === 200) {
+        const data = await response.json();
+  
+        store.token = data.token;
         this.$router.push({path:'/Watchlist'});
-} else {
-        alert("wrong password and user");
+      
       }
+      else{
+         alert("wrong password and user");
+      }
+    
     },
   },
 });

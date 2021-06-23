@@ -34,7 +34,7 @@ const router = createRouter({
 router.beforeEach((to,from,next)=>
 {
   if(to.meta.requireAuth){
-    if(store.user!=="")
+    if(store.token!=="")
       next();
   
     else

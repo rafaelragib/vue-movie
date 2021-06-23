@@ -1,10 +1,10 @@
 interface storeType {
-    user: string;
+    token: string;
     watchList: string[];
   }
 
 export const store:storeType= {
-    user:"",
+    token:"",
     watchList:[]
 };
 

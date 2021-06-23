@@ -7,10 +7,7 @@ export const userController = (user: mongoose.Model<userType>) => {
     async function createUser(req: any, res: any) {
         try {
             const hashedPass = bcrypt.hashSync(req.body.password, 8);
-            // const newUser = new user({
-            //     'username': req.body.username,
-            //     'password': hashedPass
-            // })
+    
             const newUser = await user.create({
                 'username': req.body.username,
                 'password': hashedPass
@@ -41,7 +38,7 @@ export const userController = (user: mongoose.Model<userType>) => {
             const queryUser = await user.findOne({
                 'username': req.body.username
             });
-            console.log(queryUser);
+          
             if (queryUser) {
 
                 const isPasswordValid = bcrypt.compareSync(req.body.password, queryUser.password);
@@ -54,8 +51,11 @@ export const userController = (user: mongoose.Model<userType>) => {
                 var token = jwt.sign({ id: queryUser._id },secretkey, {
                     expiresIn: 86400 // expires in 24 hours
                 });
-
-                res.status(200).send({ auth: true, token: token });
+                res.status(200);
+              
+               
+                return res.send({auth:true,token:token});
+                
             }
 
 
