@@ -67,10 +67,10 @@ export const userController = (user: mongoose.Model<userType>,watchList:mongoose
                     userId:queryUser._id,
                     links:
                     {
-                        watchlist:`http://localhost:3000/watchlist/${queryUser._id}`
+                        watchlist:`https://${req.hostname}:${process.env.PORT}/watchlist/${queryUser._id}`
                     },
                 };
-               
+                
                 return res.send(requestObject);
                 
             }

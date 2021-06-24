@@ -33,5 +33,5 @@ if (env == 'production') {
 }
 
 app.listen(port, () => {
-    console.log(`Server running on port http://localhost:${port}.`);
+    console.log(`Server running on port ${port}.`);
 })
