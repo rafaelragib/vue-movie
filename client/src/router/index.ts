@@ -16,8 +16,8 @@ const routes = [
     component:SignIn
   },
   {
-    path:'/Watchlist',
-    name :'WatchList',
+    path:'/watchlist',
+    name :'watchList',
     component:WatchList,
     meta:{
       requireAuth:true

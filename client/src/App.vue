@@ -32,7 +32,7 @@ export default defineComponent({
         },
         {
           title: "Watch List",
-          path: "/Watchlist",
+          path: "/watchlist",
         },
       ],
       watchLink: "",

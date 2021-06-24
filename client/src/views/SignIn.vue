@@ -16,6 +16,7 @@
 <script lang="ts">
 import { defineComponent } from "@vue/runtime-core";
 import { store } from "../store";
+import VueRouter from 'vue-router';
 export default defineComponent({
   name: "SignIn",
   data() {
@@ -37,7 +38,7 @@ export default defineComponent({
           password: this.password,
         }),
       };
-      fetch("http://localhost:3000/login", request).then((response) => {
+      fetch("login", request).then((response) => {
         if (response.status === 200) {
           response.json().then((data) => {
             store.token = data.token;
@@ -58,7 +59,7 @@ export default defineComponent({
         const response = await fetch(getLink);
         const data = await response.json();
         store.watchList = data;
-        this.$router.push({path:'/Watchlist'});
+        this.$router.push({path:'/watchlist'});
       } catch (error) {
         console.log(error);
       }

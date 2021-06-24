@@ -1,4 +1,12 @@
+const path=require('path')
+
 module.exports={
-    publicPath:
-    process.env.NODE_ENV=== 'production' ? '/vue-movie/' : '/'
+    outputDir:path.resolve(__dirname,'../server/public'),
+    devServer:{
+        proxy:{
+            '/login':{
+                target:'http://localhost:3000'
+            }
+        }
+    }
 }
