@@ -73,7 +73,7 @@ const userController = (user, watchList) => {
                         token: token,
                         userId: queryUser._id,
                         links: {
-                            watchlist: `https://${req.hostname}:${process.env.PORT}/watchlist/${queryUser._id}`
+                            watchlist: `https://${req.hostname}/watchlist/${queryUser._id}`
                         },
                     };
                     return res.send(requestObject);
