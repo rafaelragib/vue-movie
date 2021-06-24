@@ -5,7 +5,7 @@ import { Request, Response } from 'express';
 require('dotenv').config();
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 const dbURI = process.env.mongoURI;
 const env = process.env.NODE_ENV;
 if (typeof dbURI === 'string') {

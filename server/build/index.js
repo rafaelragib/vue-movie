@@ -8,7 +8,7 @@ const mongoose_1 = __importDefault(require("mongoose"));
 const router_1 = require("./routes/router");
 require('dotenv').config();
 const app = express_1.default();
-const port = 3000;
+const port = process.env.PORT || 3000;
 const dbURI = process.env.mongoURI;
 const env = process.env.NODE_ENV;
 if (typeof dbURI === 'string') {
