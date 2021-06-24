@@ -5,7 +5,7 @@
   "main": "server/build/index.js",
   "scripts": {
     "start": "node server/build/index.js",
-    "dev": "nodemon server/index.ts",
+    "dev": "tsc && nodemon server/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
